@@ -8,9 +8,19 @@ function buildMetadata(sample) {
     /* data route */
 
   var url = "/samples/<sample>";
-  d3.json(url).then(function(response) {
+  //d3.json(url).then(function(response) {
+  d3.json(url).then((response) => {
 
     console.log('response',response);
+
+    
+    var selector = d3.select('#sample-metadata');
+    response.forEach((sample) => {
+      selector
+        //.append("option")
+        .text(sample);
+        //.property("value", sample);
+    });
 
     //var data = response;
 
