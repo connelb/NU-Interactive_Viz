@@ -78,7 +78,7 @@ def sample_metadata(sample):
         sample_metadata["BBTYPE"] = result[5]
         sample_metadata["WFREQ"] = result[6]
 
-    print(sample_metadata)
+    #print(sample_metadata)
     return jsonify(sample_metadata)
 
 
@@ -97,7 +97,7 @@ def samples(sample):
         "sample_values": sample_data[sample].values.tolist(),
         "otu_labels": sample_data.otu_label.tolist(),
     }
-    print(sample,data)
+    #print(sample,data)
     return jsonify(data)
 
 
