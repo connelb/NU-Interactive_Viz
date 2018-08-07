@@ -54,6 +54,7 @@ def names():
 @app.route("/metadata/<sample>")
 def sample_metadata(sample):
     """Return the MetaData for a given sample."""
+
     sel = [
         Samples_Metadata.sample,
         Samples_Metadata.ETHNICITY,
@@ -96,8 +97,12 @@ def samples(sample):
         "sample_values": sample_data[sample].values.tolist(),
         "otu_labels": sample_data.otu_label.tolist(),
     }
+    print(sample,data)
     return jsonify(data)
 
 
 if __name__ == "__main__":
     app.run()
+
+
+
