@@ -28,17 +28,22 @@ function buildCharts(sample) {
 var labels = [];
 var values = [];
 var hovertext = [];
+var bubbleChart = d3.select('#bubble');
 
-sample.forEach(sampleDatum=>{
-  var url = "/metadata/" + sample;
-  var bubbleChart = d3.select('#bubble');
+//sample.forEach((sampleDatum,i)=>{
+  //for (i=0;i<sample.length;i++){
+    //console.log(sample, sample.length);
+  var url = "/samples/" + sample;
+  
 
   d3.json(url).then((response) => {
+    //console.log(response)
     labels.push(response.otu_ids)
     values.push(response.sample_values)
     hovertext.push(response.otu_labels)
   })
-
+  //}
+  console.log('what is labels', labels,values);
     // @TODO: Build a Bubble Chart using the sample data
 
     // @TODO: Build a Pie Chart
@@ -59,7 +64,7 @@ sample.forEach(sampleDatum=>{
     };
 
     Plotly.newPlot("pie", data, layout);
-  })
+  //})
 }
 
 function init() {
@@ -77,10 +82,10 @@ function init() {
         });
 
         // Use the first sample from the list to build the initial plots
-        //const firstSample = sampleNames[0];
-        var top10 = sampleNames.slice(0,10)
-        buildCharts(top10);
-        buildMetadata(top10);
+        const firstSample = sampleNames[0];
+        //var top10 = sampleNames.slice(0,10)
+        buildCharts(firstSample);
+        buildMetadata(firstSample);
       });
     }
 
